@@ -7,7 +7,15 @@ class Question4 {
 		Scanner sc = new Scanner(System.in) ;
 		System.out.println("Enter a number");
 		int num = sc.nextInt() ;
-		
+		int a=10 ;
+		double b =20.3 ;
+		if(a>b) {
+			System.out.println("Sum of digits : "  );
+		}
+		else {
+			System.out.println("Sum "  );
+		}
+
 		System.out.println("Sum of digits : "  );
 		sc.close() ;
 	}
