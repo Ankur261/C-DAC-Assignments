@@ -1,8 +1,11 @@
+import java.util.*;
+
 class GrandParent {
 
 }
 
 class Parent {
+    int a  ;
     Parent(String name, int a) {
         System.out.println("Parent const " + name + a);
     }
@@ -14,6 +17,7 @@ class Parent {
 }
 
 class Child extends Parent {
+    int b =10 ;
  Child() {
 
 }
@@ -27,7 +31,21 @@ class Child extends Parent {
 class Test {
 
     public static void main(String... args) {
-        Child c = new Child("Ankur");
-        Parent p1 = new Child() ;
+
+        
+      
+      	// Map<Integer, String> m = new TreeMap<Integer, String>() ;
+		// m.put(1, "Ankur") ;
+		
+		// m.put(3, "Ankur") ;
+       
+		// m.put(4, "Ankur") ;
+		// m.put(22, null) ;
+        // m.put(2, null) ;
+        // m.put(115, "Ankur") ;
+        // System.out.println(m) ;
+
+        // System.out.println(null) ;
+        
     }
 }
