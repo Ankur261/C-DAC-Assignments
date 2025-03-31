@@ -1,9 +1,6 @@
 import java.util.* ;
 
-class CustomLinkList {
-    Node head = null ;
-
-    public static class Node {
+    class Node {
         String name ;
         String number ;
         Node next ;
@@ -14,6 +11,11 @@ class CustomLinkList {
             this.next = null ;
         }
     }
+
+class CustomLinkList {
+    Node head = null ;
+
+  
 
     static Node createContact(Node head, String name, String number) {
         Node node = new Node(name, number);
@@ -46,12 +48,13 @@ class CustomLinkList {
 
     static void searchByName(Node head, String name) {
         while(head != null ) {
-            if(head.name == name) {
+            if(head.name.equals(name)) {
                 System.out.println(head.name+ ": " + head.number);
                 return ;
             }
             head = head.next ;
         }
+        System.out.println("Contact no found with name " + name);
     }
 
     static void displayAllContacts(Node head) {
@@ -64,11 +67,11 @@ class CustomLinkList {
 
     static void choiceList(Scanner sc,  CustomLinkList llist) {
 
-        System.out.println("Welcome to contact management: ");
         System.out.println("Enter 1 to add a contact ");
         System.out.println("Enter 2 to display all contacts ");
         System.out.println("Enter 3 to search a contact ");
         System.out.println("Enter 4 to delete a contact ");
+        System.out.println("Enter 5 to exit ");
         int choice = sc.nextInt() ;
 
         String name ;
@@ -76,10 +79,11 @@ class CustomLinkList {
         
         switch(choice) {
             case 1 : 
-            System.out.println("Enter name of the contact ");
-            String name = sc.next() ;
             System.out.println("Enter number of the contact ");
-            String number = sc.next() ;
+            name = sc.nextLine() ;
+            sc.next();
+            System.out.println("Enter name of the contact ");
+            number = sc.nextLine() ;
             llist.head = CustomLinkList.createContact(llist.head, name, number) ;
             break ;
             case 2 : 
@@ -87,17 +91,22 @@ class CustomLinkList {
             break ;
             case 3:
             System.out.println("Enter name of the contact you want to search");
-            name = sc.nextLine() ;
-            llist.head = CustomLinkList.searchByName(llist.head, name) ;    
+            name = sc.next() ;
+            CustomLinkList.searchByName(llist.head, name) ;    
             break ;
             case 4:
             System.out.println("Enter name of the contact you want to delete");
-            String name = sc.nextLine() ;
-            llist.head = CustomLinkList.searchByName(llist.head, name) ;    
+             name = sc.next() ;
+            CustomLinkList.removeContact(llist.head, name) ;    
             break ;
+            case 5:
+            System.exit(0) ;  
+            break ;
+            default:
+                System.out.println("Wrong Input") ;
         }
 
-        choiceList(sc);
+        choiceList(sc,llist);
 
     }
 }
@@ -108,7 +117,7 @@ class LinkListContact {
         Scanner sc = new Scanner(System.in) ;
         CustomLinkList llist = new CustomLinkList() ;
         llist.head = CustomLinkList.createContact(llist.head, "Ankur", "9876543210") ;
-        llist.head = CustomLinkList.createContact(llist.head, "Test User", "4234234234") ;
+        llist.head = CustomLinkList.createContact(llist.head, "Test", "4234234234") ;
 
         CustomLinkList.choiceList(sc, llist) ;
         
