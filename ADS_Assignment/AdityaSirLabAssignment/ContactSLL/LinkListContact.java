@@ -36,12 +36,19 @@ class CustomLinkList {
     }
 
     static void removeContact(Node head, String name) {
-        // Node newHead = head ;
-        while(head.next != null ) {
-            if(head.next.name == name) {
+        Node prev = null ;
+        if(head.name.equals(name)) {
+            head = head.next ;
+            System.out.println(head.name + "- contact deleted");
+            return ;
+        }
+        while(head != null) {
+            if(head.name == name) {
                head.next = head.next.next ;
             }
+            prev = head ;
             head = head.next ;
+            
         }
         System.out.println("Contact not found");
     }
@@ -80,10 +87,9 @@ class CustomLinkList {
         switch(choice) {
             case 1 : 
             System.out.println("Enter number of the contact ");
-            name = sc.nextLine() ;
-            sc.next();
+            name = sc.next() ;
             System.out.println("Enter name of the contact ");
-            number = sc.nextLine() ;
+            number = sc.next() ;
             llist.head = CustomLinkList.createContact(llist.head, name, number) ;
             break ;
             case 2 : 
